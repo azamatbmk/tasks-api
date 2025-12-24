@@ -29,5 +29,5 @@ export class Task {
     createdAt: Date;
 
     @UpdateDateColumn({ name: 'updated_at' })
-    updatedAr: Date;
+    updatedAt: Date;
 }
