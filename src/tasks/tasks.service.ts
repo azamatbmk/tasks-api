@@ -9,7 +9,7 @@ import { MoveTaskDto } from './dto/move-task.dto';
 @Injectable()
 export class TasksService {
   constructor(
-    @InjectRepository(TasksRepository)
+    @InjectRepository(Task)
     private tasksRepository: TasksRepository,
   ) {}
 
