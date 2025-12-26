@@ -17,15 +17,24 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { MoveTaskDto } from './dto/move-task.dto';
 
-@Controller('api/tasks')
+@Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
   async createTask(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+  
     return this.tasksService.createTask(createTaskDto);
   }
+
+  @Get('test')
+    test() {
+      return { 
+        message: 'Tasks API with TypeORM is working!',
+        timestamp: new Date().toISOString()
+      };
+}
 
   @Get()
   async getAllTasks(

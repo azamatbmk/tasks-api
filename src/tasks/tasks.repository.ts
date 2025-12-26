@@ -9,7 +9,7 @@ export class TasksRepository extends Repository<Task> {
         super(Task, dataSource.createEntityManager());
     }
 
-    async findAllEithFilters(status?: TaskStatus): Promise<Task[]> {
+    async findAllWithFilters(status?: TaskStatus): Promise<Task[]> {
         const query = this.createQueryBuilder('task');
 
         if (status) {

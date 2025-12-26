@@ -9,7 +9,7 @@ import { MoveTaskDto } from './dto/move-task.dto';
 @Injectable()
 export class TasksService {
   constructor(
-    @InjectRepository(Task)
+    @InjectRepository(TasksRepository)
     private tasksRepository: TasksRepository,
   ) {}
 
@@ -17,13 +17,13 @@ export class TasksService {
     const task = this.tasksRepository.create({
       ...createTaskDto,
       status: TaskStatus.TODO,
-    });
+    })
     
     return await this.tasksRepository.save(task);
   }
 
   async getAllTasks(status?: TaskStatus): Promise<Task[]> {
-    return await this.tasksRepository.findAllEithFilters(status);
+    return await this.tasksRepository.findAllWithFilters(status);
   }
 
   async getTaskById(id: number): Promise<Task> {
